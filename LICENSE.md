@@ -1,3 +1,12 @@
+
+
+Slide content LICENSE
+
+![license image](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
+[Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+Reveal.js LICENSE
+
 Copyright (C) 2017 Hakim El Hattab, http://hakim.se, and reveal.js contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
