@@ -6,11 +6,18 @@
 
 		<title>reveal.js</title>
 
+
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- presentation styles -->
+		<link rel="stylesheet" href="css/presentation.css">
+
+		<!-- bundling -->
+		<script src="bundle.js"></script>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -24,8 +31,55 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section class="slide-1">
+					<section>
+						<h2>Welcome to the</h2>
+						<h1>Angular and Ionic workshop</h1>
+						<footer>
+							Hosted by Covve with the help of...
+						</footer>
+					</section>
+					<section>
+						<a href="https://twitter.com/masimplo">this guy @masimplo</a>
+						<img data-src="https://pbs.twimg.com/profile_images/492640948212338688/g26U_cDm_400x400.jpeg">
+					</section>
+					<section>
+						<a href="https://twitter.com/jasonasmk">and that guy @JasonAsmk</a>
+						<img data-src="https://pbs.twimg.com/profile_images/913471706211241984/yyzfl-5R_400x400.jpg">
+					</section>
+				</section>
+
+				<section class="slide-2">So...<br>Let's get started!</section>
+				<section class="slide-3">
+					<section>
+						<h2>Let's talk about the Internet a bit</h2>
+						<img class="net-is-cool" data-src="assets/net-is-cool.jpeg">
+					</section>
+					<section>
+						<p>Javascript was created 21 years ago by Brendan Eich
+							it's been updated since then</p>
+						<p>Along with HTML(for content), CSS(for styling). JS(functionality) is one of the 3 main technologies used in modern web.</p>
+					</section>
+					<section>
+							<h2>Why browser technology is the future</h2>
+							<ul>
+								<li class="fragment">Browsers are almost everywhere(well not in your toaster yet). Develop for many platforms with one codebase.</li>
+								<li class="fragment">Powerful layout engines (Blink, Gecko, Servo, Webkit etc) and JS engines(V8, SpiderMonkey, Nitro etc) make browsers blazing fast</li>
+								<li class="fragment">NodeJS allows for server-side applications closely interlaced with the operating system.</li>
+								<li class="fragment">Best tooling hands down!</li>
+								<li class="fragment">Developer friendly with DevTools(Chrome, Moz) for inspection and transpiled languages ranging from Typescript(.Net friendly) to Elm(it's functional!)</li>
+							</ul>
+					</section>
+					<section>
+						<h2>How about um...downsides?</h2>
+						<p>Like all things there are some drawbacks</p>
+						<ul>
+							<li class="fragment">Technologies change every now and then. You need to keep up.</li>
+							<li class="fragment">Not exactly plug and play for framework setups. Documentation is awesome though!</li>
+							<li class="fragment">You *will* rely too much on external libraries. </li>
+						</ul>
+					</section>
+				</section>
 			</div>
 		</div>
 

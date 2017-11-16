@@ -7,7 +7,7 @@
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
-    "start": "grunt serve",
+    "start": "node_modules/.bin/webpack js/presentation.js bundle.js && grunt serve",
     "build": "grunt"
   },
   "author": {
@@ -33,12 +33,16 @@
     "grunt-contrib-qunit": "~1.2.0",
     "grunt-contrib-uglify": "~0.9.2",
     "grunt-contrib-watch": "~1.0.0",
-    "grunt-sass": "~1.2.0",
     "grunt-retire": "~0.3.10",
+    "grunt-sass": "~1.2.0",
     "grunt-zip": "~0.17.1",
     "mustache": "~2.2.1",
     "node-sass": "~3.13.0",
-    "socket.io": "^1.4.8"
+    "socket.io": "^1.4.8",
+    "webpack": "^3.8.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "odometer": "^0.4.8"
+  }
 }
