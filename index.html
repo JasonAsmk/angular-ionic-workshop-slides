@@ -80,6 +80,96 @@
 						</ul>
 					</section>
 				</section>
+				<section>Preliminaries</section>
+				<section>
+					<section><h1>Let's go through Git fast. Chop chop!</h1></section>
+					<section>
+						<p>Sooner or later you'll work with others on projects. Small teams, large team, there's always the need to share your work with others.
+						<br>How would you share your code and collaborate?</p>
+					</section>
+					<section>
+						<div>
+							<img class="git-github" data-src="assets/git_github.png">
+							<p>Git is a <b>widely</b> used distributed version control system.</p>
+							<ul>
+								<li>Helps you keep a <i>history</i> of your work so you can go back if needed</li>
+								<li>Allows you to use your codebase into <i>branches</i> each one reflecting a different feature you're working on</li>
+								<li>Save code to a <i>repo</i> and share it with your team</li>
+							</ul>
+						</div>
+						<div class="fragment" style="border:solid 2px #EC412D!important">Github on the other hand is a service that uses git to give you space online to save your repos publicly or privately.</div>
+					</section>
+					<section>
+						<p><i>- Branches? Wut?</i></p>
+						<p>Yes branches. A typical git workflow looks something like...</p>
+						<img data-src="assets/git-workflow.png" style="height:400px">
+					</section>
+					<section>
+						<p>
+							Some usual git commands could be:
+							<ul>
+								<li><pre><code class="bash">git init # initializes a repository</code></pre></li>
+								<li><pre><code class="bash">git clone git@github.com:ionic-team/stencil.git # clones a remote repo to your computer</code></pre></li>
+								<li><pre><code class="bash">git checkout hotfix/syncDatetimeIssue # switch to another local branch to work on</code></pre></li>
+								<li><pre><code class="bash">git push origin feature/AddSomeCoolStuff # pushes your branch to remote origin</code></pre></li>
+							</ul>
+						</p>
+						<footer class="fragment">This just scratches the surface of what Git can do! As it is out of scope for this workshop checkout some links below!</footer>
+					</section>
+				</section>
+				<section>
+					<section><h1>NPM</h1></section>
+					<section>
+						<img data-src="assets/npm.png">
+						<p>Npm stands for Node Package Manager.</p>
+						<p>A typical web app depends on dozens of packages that each satisfies a specific need.
+							Npm is a command line tool that helps you organize your code into <i>Node modules</i> which you can distribute through the npm website.
+							Similarly you can search for something you need and download it.
+						</p>
+					</section>
+					<section>
+							I.E. Say you need a simple library for making HTTP calls. Through <a href="https://www.npmjs.com/package/request">www.npmjs.com</a> we find a cute library named request.
+							You can install it as simply as
+							<pre>
+								<code class="bash" data-trim data-noescape>
+									# Variants of the npm install command
+									npm install request
+									npm install -g request
+									npm install --save request
+									npm install --save-dev request
+								</code>
+							</pre> via your command line. But what happens next?
+					</section>
+					<section>
+						<p>Installing a package writes an appropriate enty in a file called <code>package.json</code></p>
+						<p>You can think of <code>package.json</code> as a config file for your project's npm packages.
+
+						Among other things it:
+						<ul>
+							<li class="fragment">Contains information for what packages your project <i>depends on</i></li>
+							<li class="fragment">Allows you specify versions of packages</li>
+							<li class="fragment">Lets you share it with another developer who will get the same packages with a simple <code>npm install</code></li>
+						</ul>
+						</p>
+						<p class="fragment spoiler">It can help you run build tasks and scripts too!</p>
+					</section>
+					<section>
+						<div>
+							<h2>Example</h2>
+							<p>The following is a very good example of a package.json from a large project called StencilJS, which compiles UI components into web components.<br><br>
+								<a href="https://github.com/ionic-team/stencil/blob/master/package.json">Take me to the Github page please!</a>
+							</p>
+						</div>
+						<footer class="fragment">OK! What's next?</footer>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Ionic CLI</h2>
+						<p>Last one I promise!</p>
+						<p></p>
+					</section>
+				</section>
 			</div>
 		</div>
 

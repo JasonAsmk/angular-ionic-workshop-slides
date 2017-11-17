@@ -80,11 +80,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 (function() {
 
-  $('.anim-text-flow').html(function(i, html) {
-    var chars = $.trim(html).split("");
-
-    return '<span>' + chars.join('</span><span>') + '</span>';
-  });
   document.addEventListener('slidechanged', function(event) {
   });
 

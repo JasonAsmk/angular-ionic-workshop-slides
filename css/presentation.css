@@ -1,5 +1,12 @@
+.reveal pre {
+  display: grid; }
+
 .net-is-cool {
   height: 400px; }
+
+.git-github {
+  height: 200px;
+  margin: auto; }
 
 .anim-text-flow {
   /*
@@ -23,47 +30,47 @@
 
 @keyframes anim-text-flow-keys {
   0% {
-    color: #5cced6; }
+    color: #5cd4d6; }
   5% {
-    color: #d6ba5c; }
+    color: #6c5cd6; }
   10% {
-    color: #5cd699; }
+    color: #a75cd6; }
   15% {
-    color: #d65e5c; }
-  20% {
-    color: #d65c93; }
-  25% {
-    color: #ce5cd6; }
-  30% {
-    color: #d65cc6; }
-  35% {
-    color: #5cc0d6; }
-  40% {
-    color: #6ed65c; }
-  45% {
-    color: #d6ca5c; }
-  50% {
     color: #d05cd6; }
+  20% {
+    color: #5cd6cc; }
+  25% {
+    color: #d65c6e; }
+  30% {
+    color: #d65c8d; }
+  35% {
+    color: #915cd6; }
+  40% {
+    color: #d6815c; }
+  45% {
+    color: #5cd6c6; }
+  50% {
+    color: #bad65c; }
   55% {
-    color: #d68f5c; }
+    color: #5c91d6; }
   60% {
-    color: #d65cab; }
+    color: #a95cd6; }
   65% {
-    color: #d65ca3; }
-  70% {
-    color: #5cccd6; }
-  75% {
     color: #5cd68d; }
+  70% {
+    color: #d65c74; }
+  75% {
+    color: #d65c9f; }
   80% {
-    color: #5c8dd6; }
+    color: #ce5cd6; }
   85% {
-    color: #d6b65c; }
+    color: #d45cd6; }
   90% {
-    color: #d6785c; }
+    color: #d6975c; }
   95% {
-    color: #d67e5c; }
+    color: #5cd6a5; }
   100% {
-    color: #605cd6; } }
+    color: #625cd6; } }
   .anim-text-flow span:nth-of-type(1) {
     animation-delay: -19.8s; }
   .anim-text-flow span:nth-of-type(2) {
@@ -264,3 +271,78 @@
     animation-delay: -0.2s; }
   .anim-text-flow span:nth-of-type(100) {
     animation-delay: 0s; }
+
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+.spoiler {
+  position: relative;
+  color: transparent;
+  text-shadow: 0 0 20px #55657a;
+  cursor: help; }
+
+.spoiler::before, .spoiler::after {
+  display: block;
+  position: absolute;
+  line-height: 1;
+  color: #872e27;
+  text-align: center;
+  text-shadow: none; }
+
+.spoiler::before {
+  top: 36px;
+  left: 0;
+  right: 0;
+  font-size: 72px;
+  content: 'SPOILER ALERT'; }
+
+.spoiler::after {
+  opacity: 0;
+  top: 84px;
+  left: calc(50% - 36px);
+  width: 60px;
+  font-size: 60px;
+  line-height: 72px;
+  text-align: center;
+  clip: rect(0, 72px, 72px, 0);
+  content: '3 2 1'; }
+
+.spoiler:hover {
+  color: white;
+  text-shadow: 0 0 0 transparent;
+  transition: all 1s !important;
+  transition-delay: 4s !important; }
+
+.spoiler:hover::before {
+  animation: countdown-before 5s forwards; }
+
+.spoiler:hover::after {
+  animation: countdown-after 5s forwards; }
+
+@keyframes countdown-before {
+  25% {
+    transform: translateY(-24px); }
+  75% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px); } }
+
+@keyframes countdown-after {
+  25% {
+    opacity: 1;
+    clip: rect(0, 72px, 72px, 0);
+    transform: translateY(0);
+    animation-timing-function: steps(1, start); }
+  50% {
+    clip: rect(72px, 72px, 144px, 0);
+    transform: translateY(-72px);
+    animation-timing-function: steps(1, start); }
+  75% {
+    opacity: 1;
+    clip: rect(144px, 72px, 216px, 0);
+    transform: translateY(-144px); }
+  100% {
+    opacity: 0;
+    clip: rect(144px, 72px, 216px, 0);
+    transform: translateY(-144px); } }
