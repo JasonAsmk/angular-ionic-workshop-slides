@@ -116,6 +116,14 @@
 						</p>
 						<footer class="fragment">This just scratches the surface of what Git can do! As it is out of scope for this workshop checkout some links below!</footer>
 					</section>
+					<section>
+						<ul>
+							<li><a href="http://git-scm.com/book">http://git-scm.com/book (ProGit book)</a></li>
+							<li><a href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1 (Git intro tutorial)</a></li>
+							<li><a href="https://github.com/k88hudson/git-flight-rules">https://github.com/k88hudson/git-flight-rules (excellent cookbook style notes)</a></li>
+							<p>...or type <code class="bash">man gittutorial</code> for a quick tutorial in your terminal</p>
+						</ul>
+					</section>
 				</section>
 				<section>
 					<section><h1>NPM</h1></section>
@@ -167,7 +175,55 @@
 					<section>
 						<h2>Ionic CLI</h2>
 						<p>Last one I promise!</p>
-						<p></p>
+					</section>
+					<section>
+						<img data-src="assets/cordova.png" class="cordova-cute">
+						<img data-src="assets/heart.gif" class="cordova-heart">
+						<p>Both Ionic and Angular have CLIs for building and controlling various aspects of your project. On an Ionic project you'll be using mostly <code>Ionic</code> and it's wrapped CLI <code>Ionic cordova</code>
+						</p>
+						<p>We'll mention the most commands you'll use the most and we suggest to take a look at the full list at your leisure which is located here:
+							<a href="https://ionicframework.com/docs/cli/commands.html">https://ionicframework.com/docs/cli/commands.html</a>
+						</p>
+					</section>
+					<section>
+						<pre><code>ionic start [&#60;name&#62;] [&#60;template&#62;]</code></pre>
+						<p>Scaffolds a new Ionic project using a template. Although not necessary, since you can build your project from zero. It's useful for quick prototyping and testing things or even when you need to setup a project fast.</p>
+						<p>Templates are available through Ionic and some examples are "blank, tabs, sidemenu, conference, tutorial".</p>
+					</section>
+					<section>
+						<pre><code>ionic cordova platform [&#60;action&#62;] [&#60;platform&#62;]</code></pre>
+						<p>Performs an action for a target platform, where platfom can be <code>android</code> or <code>ios</code></p><br>
+						<p>Among the possible actions the ones you'll use the most are <code>add</code> and <code>remove</code></p>
+					</section>
+					<section>
+						<pre><code>ionic generate [&#60;type&#62;] [&#60;name&#62;]</code></pre>
+						<p>Automatically generates one of the following using a given name:
+							<p><span class="fragment">Component</span><span class="fragment">, Directive</span><span class="fragment">, Page</span><span class="fragment">, Pipe</span><span class="fragment">, Provider</span><span class="fragment">, Tabs</span></p>
+						</p>
+						<p class="fragment">Example: <br><pre><code>ionic generate component foo</code></pre><br>Create a component named foo in my current working directory</p>
+					</section>
+					<section>
+						<pre><code>ionic cordova prepare</code></pre>
+						<p>Copy assets to the target platforms as a step prior to building.</p>
+					</section>
+					<section>
+						<pre><code>ionic cordova build [<platform>]</code></pre>
+						<p>Build your project for the target platform. Possible options are <code>android</code> and <code>ios</code></p>
+					</section>
+					<section>
+						<p>The first <span style="color: #ffd700">Holy Grail</span></p>
+						<p>
+							<pre><code>ionic serve</code></pre>
+							Starts a local http server for testing your app in your browser. You can test and debug(chrome devtools) your app in the browser without deploying to a real device or emulator.
+						</p>
+					</section>
+					<section>
+						<p>The second <span style="color: #ffd700">Holy Grail</span></p>
+						<p>
+							<pre><code>ionic cordova run [&#60;platform&#62;]</code></pre>
+							Deploy your app to a real testing device (which is connected by usb) or emulator. This will build your app and will try to find a target to install and launch your app.
+						</p>
+						<footer style="color: #ffd700">Note 1: Both the android and ios scenario require a bit of setup beforehand. Please refer to the Ionic official docs.<br>Note 2: Lots of plugins only work in real devices!</footer>
 					</section>
 				</section>
 			</div>
