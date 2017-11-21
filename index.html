@@ -149,7 +149,7 @@
 							</pre> via your command line. But what happens next?
 					</section>
 					<section>
-						<p>Installing a package writes an appropriate enty in a file called <code>package.json</code></p>
+						<p>Installing a package writes an appropriate entry in a file called <code>package.json</code></p>
 						<p>You can think of <code>package.json</code> as a config file for your project's npm packages.
 
 						Among other things it:
@@ -215,6 +215,7 @@
 						<p>
 							<pre><code>ionic serve</code></pre>
 							Starts a local http server for testing your app in your browser. You can test and debug(chrome devtools) your app in the browser without deploying to a real device or emulator.
+							<br><span class="fragment" style="color:#EC412D">Hot reloading!</span>
 						</p>
 					</section>
 					<section>
@@ -226,6 +227,197 @@
 						<footer style="color: #ffd700">Note 1: Both the android and ios scenario require a bit of setup beforehand. Please refer to the Ionic official docs.<br>Note 2: Lots of plugins only work in real devices!</footer>
 					</section>
 				</section>
+				<section>
+					<section  data-background-image="assets/typescript-background.jpg"></section>
+					<section>
+						<h2>Why typescript?</h2>
+						<p>Typescript is the weapon of choice for Angular and Ionic dev teams.<br>
+							<ul>
+								<li class="fragment" style="color:aquamarine">Is a <b>superset</b> of javascript. Transpiles to Javascript(ES5 or ES6) with the <code>tsc</code> compiler</li>
+								<li class="fragment" style="color:#ffd700">Provides extra features over javascript.<sup style="font-size:50%">we gonna see them soon<sup style="font-size:70%">tm</sup></sup></li>
+								<li class="fragment" style="color:forestgreen">Tooling for autocompletion, navigation and refactoring.
+							  <li class="fragment" style="color:coral">Promotes structured coding. Readability.</li>
+	   						<li class="fragment" style="color:khaki">Adds a layer over javascript for static typing! This is never seen in transpiled JS.</li>
+								<li class="fragment" style="color:violet">One of the best things Microsoft has done 😈. It is open source with an active community!</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<p>First step is to install typescript: <pre><code>npm install -g typescript</code></pre><br>
+							This will install the <code>tsc</code> compiler globally in your system. Typescript files end with <code>.ts</code>
+							<pre><code>tsc hello.ts</code></pre>
+							Which will result in a <code>hello.js</code> file.
+							<br>
+							<footer>
+								Super important note: You can write ES5 Javascript in Typescript files because Typescript is a superset of JS!
+								You can even interweave JS and TS code.
+							</footer>
+							<aside class="notes">The resulting hello.js can be used inside script tags like a normal JS file.</aside>
+						</p>
+					</section>
+					<section>
+						<p><a href="https://www.typescriptlang.org/play/index.html">https://www.typescriptlang.org/play/index.html</a></p>
+						Let's try this.
+						<pre>
+							<code class="typescript">
+interface Machine{
+  beepBoop: (string) => void;
+}
+
+class Robot implements Machine {
+  constructor() {
+    console.log('Initialized!');
+  }
+
+  public beepBoop(phrase?: string) {
+    console.log("I'm a robot beep boop!");
+    if (phrase) {
+      console.log(phrase)
+    }
+  }
+}
+
+let r2d2 = new Robot();
+r2d2.beepBoop("Help me, Obi-Wan Kenobi. You're my only hope.");
+							</code>
+							<aside class="notes">Note that Javascript expressions remain the same. Notice that global objects like console are still the same. Try to change string to number and watch what happens.</aside>
+						</pre>
+					</section>
+					<section>
+						<p>Let's jump through some features of Typescript.</p>
+					</section>
+					<section>
+						<p>Types...duh!</p>
+<pre>
+	<code class="typescript">
+let isDone: boolean = false; // boolean
+let times: number = 5; //numbers
+let someCoolFloat = 5.2; //also a number
+let friends: Array&#60;string&#62; = ['Max', 'Agatha']; //array of strings
+let isClicked: any = true; // any is the catch-all type
+	</code>
+</pre>
+				<p>Also more types like <code>null, never, void, undefined</code>... and many more</p>
+			  <aside class="notes">void is the absence of a type, never is the type of always throw or never return. Types can be seen in functions, values, properties etc.</aside>
+          </section>
+          <section>
+            <p>You can also create your own types and even make unions, intersections, nullable types, polymorphic, have type guards and assertions and many more.</p>
+            <p class="fragment">People with strongly-typed backgrounds do actually appreciate these. e.g.Haskellers</p>
+            <aside class="notes">The plethora of type functionality available doesn't mean you have to use them. Nobody actually does except compiler people and very large projects...</aside>
+          </section>
+					<section>
+						<p>Classes (as advertised on ES6!)</p>
+<pre>
+	<code class="typescript">
+class Greeter {
+	greeting: string;
+	constructor(message: string) {
+		this.greeting = message;
+	}
+	greet() {
+		return "Hello, " + this.greeting;
+	}
+}
+
+let greeter = new Greeter("world");
+	</code>
+</pre>
+					  <aside class="notes">Explain the general syntax, constructor, properties(ask if they know what a property is), method and that they dont need 'function', 'new' keyword like in many other languages</aside>
+					</section>
+					<section>
+						<p>A note about <span style="color:aqua">this</span>.</p>
+						<p class="fragment">Is everyone familiar with OOP? Classes and Objects?</p>
+						<p class="fragment">In object-oriented programming you need a way to refer to the object for accessing properties, methods etc. The keyword <span style="color:aqua">this</span> is used to refer to the current object in this<sup style="font-size:50%">no pun intended</sup> context</p>
+						<p class="fragment">The way 'this' is scoped is the same as in Javascript. But by using <span style="color:aqua">let declarations</span> and <span style="color:aqua">arrow functions</span> we alleviate some problems.</p>
+						<aside class="notes">Try to explain simply what is this and how it can mess up your code. Bad behaviour that we get from JS. Mention it's out-of-context and should refer to JS docs.</aside>
+					</section>
+					<section>
+						<p>Functions</p>
+<pre>
+	<code class="typescript">
+// standard JS function
+function add(x, y) {
+  return x + y
+}
+
+// anonymous function
+let myAdd = function(x, y) { return x + y };
+
+// arrow function
+let myAdd = (x, y) => {
+  return x + y;
+}
+
+// class method
+class Foo{
+  bar() {
+    return 1;
+  }
+}
+	</code>
+</pre>
+					</section>
+					<section>
+						<p style="color:tomato">Secret level, arrow functions and this</p>
+<pre>
+	<code class="typescript">
+let deck = {
+  suits: ["hearts", "spades", "clubs", "diamonds"],
+	cards: Array(52),
+  createCardPicker: function() {
+    return function() {
+      let pickedCard = Math.floor(Math.random() * 52);
+      let pickedSuit = Math.floor(pickedCard / 13);
+
+      return {suit: this.suits[pickedSuit], card: pickedCard % 13};
+    }
+  }
+}
+
+let cardPicker = deck.createCardPicker();
+let pickedCard = cardPicker();
+
+alert("card: " + pickedCard.card + " of " + ickedCard.suit);
+	</code>
+</pre>
+<aside class="notes">Reason to use an arrow function is this. Here createCardPicker captures 'window' as 'this'. Using an arrow function instead captures the 'this' where the function is created rather than invoked</aside>
+					</section>
+					<section>
+						<p>Special mention to Decorators</p>
+						<p>Decorators are a special kind of syntax that can be applied to classes, methods, properties, accessors and parameters.</p>
+						<p>It's a way to add metadata and annotations to your code that the compiler sees and interprets accordingly!</p>
+					</section>
+					<section>
+						<p>Looks like this:</p>
+<pre>
+	<code class="typescript">
+@classDecorator
+class Greeter {
+  property = "property";
+  hello: string;
+
+  @someMethodDecorator(true, 42)
+  constructor(m: string) {
+    this.hello = m;
+  }
+}
+	</code>
+</pre>
+<aside class="notes">What they do depends on the case. Libraries provide decorators that you have to use and you can even write your own. For instance the class decorator here could alter the constructor to do something else and the method decorator could alter the Property Descriptor of a method, to observe, modify or replace the method itself. Angular and Ionic use decorators a lot, but there are some standard easy-to-learn cases</aside>
+					</section>
+					<section>
+						<p>Apart from these Typescript supports the usual for loops, if/else, try/catch statements. Also enums, interfaces, modules, namespaces etc.</p>
+						<p class="fragment">If C# and JS had a baby, it would be Typescript!</p>
+						<p class="fragment">These things are out of scope for the second part of the presentation so we suggest you take a look at your own pace.</p>
+          </section>
+          <section>
+            <p>Some people in this room can learn a language by using it.</p>
+            <p>For the rest of us the best resource available is the official online docs</p>
+            <p><a href="https://www.typescriptlang.org/docs/home.html">https://www.typescriptlang.org/docs/home.html</a></p>
+            <img style="height: 200px;" data-src="assets/typescript.png">
+            <aside class="notes">Tell them to always read code, and write their own examples not just read them. Nobody gets everything first try. Even if we fail we can only get better and better.</aside>
+          </section>
+        </section>
 			</div>
 		</div>
 
