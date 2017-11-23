@@ -418,6 +418,277 @@ class Greeter {
             <aside class="notes">Tell them to always read code, and write their own examples not just read them. Nobody gets everything first try. Even if we fail we can only get better and better.</aside>
           </section>
         </section>
+        <section  data-background-color="#176BCC">
+          <section>
+            <img style="height: 200px;" class="remove-img-presets" data-src="assets/angular.png">
+            <h2>Let's dive into Angular</h2>
+            <aside class="notes">Angular != AngularJS, different technologies, AngularJS might be deprecated in the future.</aside>
+          </section>
+          <section>
+            What is Angular? <span class="fragment">Simply put it's a framework...for building web apps in HTML and TS/JS!</span>
+          </section>
+          <section>
+            <p>Features</p>
+            <ul>
+              <li class="fragment">Transparent Model to View Synchronization</li>
+              <li class="fragment">Code generated => Less code, in comparison with JQuery which needs a lot of manual stuff</li>
+              <li class="fragment">Promotes structured app architecture</li>
+              <li class="fragment">UI Perfomance</li>
+              <li class="fragment">Great on X-platform apps and browsers(polyfilled if needed)</li>
+              <li class="fragment">aaaand...</li>
+            </ul>
+            <aside class="notes">Mention separation of concerns, perfomance => View is modified by generating directly DOM trees instead of passing HTML to the browser(bypass parsing)</aside>
+          </section>
+          <section>
+            <p>Cool stuff like:</p>
+            <ul>
+              <li class="fragment">Form builder</li>
+              <li class="fragment">Change Detection</li>
+              <li class="fragment">Templating</li>
+              <li class="fragment">Routing(if you need one)</li>
+              <li class="fragment">Annotations, Observables, Shadow DOM and more</li>
+            </ul>
+          </section>
+          <section>
+            <p>Architecture in Angular</p>
+            <img style="height: 500px;" class="remove-img-presets" data-src="assets/architecture.png">
+            <footer class="fragment">Let's analyze each part</footer>
+            <aside class="notes">
+              <pre>
+Try to give examples.
+Modules-> Angular has it's own modularity system(NgModules), there are also Angular libraries  which start with the @Angular prefix, you install them with npm and import them with 'import'
+Components -> Components control a patch of the screen called a view. Defines app logic inside a class and interacts with the view via properties and methods.
+Templates -> Each component view comes with a template. It's some form of HTML that tells Angular how to render the component.
+Metadata -> We said that a component uses a class. The metadata on a class tells Angular how to handle the class.
+Data binding-> Is what lets components communicate with each other. On a JQuery scenario you'd have to push/pull data into the HTML.
+Directives-> Extremely similar to Components. Component = directive + template . Use cases?
+Services-> Usually classes that provide needed functionality. Could be anything like a DB handler, service for http requests, wrapper for something, a service doing Fibonacci(why not?).
+Injector-> Dependency injection is a way to supply a new instance of a class. (design pattern out-of-scope, explain alternatives for example)
+              </pre>
+            </aside>
+          </section>
+          <section>
+            <p>Templates</p>
+            <p><code>src/app/hero-list.component.html</code></p>
+<pre>
+  <code class="html">
+&#60;h2&#62;Hero List&#60;/h2&#62;
+
+&#60;p&#62;&#60;i&#62;Pick a hero from the list&#60;/i&#62;&#60;/p&#62;
+&#60;ul&#62;
+  &#60;li *ngFor="let hero of heroes" (click)="selectHero(hero)"&#62;
+    {{hero.name}}
+  &#60;/li&#62;
+&#60;/ul&#62;
+
+&#60;app-hero-detail *ngIf="selectedHero" [hero]="selectedHero"&#62;&#60;/app-hero-detail&#62;
+
+  </code>
+</pre>
+            <aside class="notes">Remember that a component's view comes with a template.<br>This is as is. No extra html. Notice the event binding and property binding, the ngFor and ngIf directive and the interpolation</aside>
+          </section>
+          <section>
+            <p><code>src/app/hero-detail/hero-detail.component.html</code></p>
+<pre>
+  <code class="html">
+&#60;div *ngIf="hero"&#62;
+
+  &#60;h2&#62;{{ hero.name | uppercase }} Details&#60;/h2&#62;
+  &#60;div&#62;&#60;span&#62;id: &#60;/span&#62;{{hero.id}}&#60;/div&#62;
+  &#60;div&#62;
+    &#60;label&#62;name:
+      &#60;input [(ngModel)]="hero.name" placeholder="name"/&#62;
+    &#60;/label&#62;
+  &#60;/div&#62;
+
+&#60;/div&#62;
+  </code>
+</pre>
+          <aside class="notes">This is the nested component from before.</aside>
+          </section>
+          <section>
+            <p>Components</p>
+            <p>src/app/hero-list.component.ts</p>
+<pre>
+  <code class="typescript">
+@Component({
+  selector:    'app-hero-list',
+  templateUrl: './hero-list.component.html',
+  providers:  [ HeroService ]
+})
+export class HeroListComponent implements OnInit {
+  heroes: Hero[];
+  selectedHero: Hero;
+
+  constructor(private service: HeroService) { }
+
+  ngOnInit() {
+    this.heroes = this.service.getHeroes();
+  }
+
+  selectHero(hero: Hero) {
+    this.selectedHero = hero;
+  }
+}
+  </code>
+</pre>
+          <aside class="notes">Leave metadata for later. Properties, constructor like any other class, notice the injection, lifecycle hook, and ordinary method. How it binds with template. </aside>
+          </section>
+          <section>
+            <p>Metadata</p>
+            <p>Metadata tells Angular how to handle this component.</p>
+            <ul>
+              <li>selector -> Name to use it in HTML. <pre><code>&#60;app-hero-list&#62;&#60;/app-hero-list&#62;</code></pre></li>
+              <li>templateUrl -> Path to template</li>
+              <li>providers -> Services to register</li>
+              <li>More(animation, changeDetection etc)</li>
+            </ul>
+            <aside class="notes">Refer to docs for more info. Mention that it's possible to embed template.</aside>
+          </section>
+          <section>
+            <p>Data binding</p>
+            <img class="remove-img-presets" style="height: 200" data-src="assets/databinding.png">
+            <footer>Let's run through the various scenarios</footer>
+            <aside class="notes">Explain fast each case</aside>
+          </section>
+          <section>
+          <p>Property binding<br>selectedHero of outer component binds to hero property of app-hero-detail</p>
+<pre>
+  <code class="html">
+&#60;h2&#62;Hero details&#60;/h2&#62;
+&#60;app-hero-wrapper&#62;
+  &#60;app-hero-detail [hero]="selectedHero"&#62;&#60;/app-hero-detail&#62;
+&#60;/app-hero-wrapper&#62;
+  </code>
+</pre>
+          <aside class="notes">Note that it's not the app-hero-wrapper providing the value. But the component that relates to this template!</aside>
+          </section>
+          <section>
+<pre>
+  <code class="typescript">
+@Component({
+  // metadata here
+})
+export class AppHeroDetailComponent{
+  @Input() hero: Hero;
+
+  constructor(){
+    console.log(this.hero);  //gets the value through property binding!
+  }
+}
+  </code>
+</pre>
+          </section>
+          <section>
+            <p>Event binding</p>
+<pre>
+  <code class="html">
+&#60;button (click)="onSave"&#62;Save&#60;/button&#62;
+&#60;app-hero-detail (deleteRequest)="deleteHero()"&#62;&#60;/app-hero-detail&#62;
+  </code>
+</pre>
+          <aside class="notes">Explain where is deleteRequest and where is the method it calls. Mention (click) and other reserved events</aside>
+          </section>
+          <section>
+<pre>
+  <code class="typescript">
+import { EventEmitter } from '@angular/core';
+
+@Component({
+  // metadata here
+})
+export class AppHeroDetailComponent{
+  @Input() hero: Hero;
+  @Output() deleteRequest:EventEmitter&#60;null&#62 = new EventEmitter&#60;null&#62();
+
+  constructor(){
+    // let's say something triggers the deleteRequest Like
+    setTimeout(()=>{
+      this.deleteRequest.emit();
+    }, 1000);
+  }
+}
+  </code>
+</pre>
+          <aside class="notes">EventEmitter is angular's way of firing events. Say a more realistic scenario</aside>
+          </section>
+          <section>
+            <p>One more example</p>
+<pre>
+  <code class="typescript">
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-sizer',
+  template: `
+  &#60;div&#62;
+    &#60;button (click)="dec()" title="smaller"&#62;-&#60;/button&#62;
+    &#60;button (click)="inc()" title="bigger"&#62;+&#60;/button&#62;
+    &#60;label [style.font-size.px]="size"&#62;FontSize: {{size}}px&#60;/label&#62;
+  &#60;/div&#62;`
+})
+export class SizerComponent {
+  @Input()  size: number | string;
+  @Output() sizeChange = new EventEmitter<number>();
+
+  dec() { this.resize(-1); }
+  inc() { this.resize(+1); }
+
+  resize(delta: number) {
+    this.size = Math.min(40, Math.max(8, +this.size + delta));
+    this.sizeChange.emit(this.size);
+  }
+}
+  </code>
+</pre>
+          </section>
+          <section>
+            <p>Two-way binding</p>
+            <img data-src="assets/banana.png" class="remove-img-presets" style="height:300px">
+          </section>
+          <section>
+            <p>
+              Does exactly what you think.
+<pre>
+  <code>
+&#60;app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"&#62;&#60;/app-sizer&#62;
+&#60;app-sizer [(size)]="fontSizePx"&#62;&#60;/app-sizer&#62;
+  </code>
+</pre>
+              <br><code>[(x)]</code> requires a settable property <code>x</code> and a corresponding event named <code>xChange</code>
+            </p>
+            <p class="fragment"><code>[(ngModel)]</code> is a special case</p>
+            <aside class="notes">refer to the previous code example. ngModel enables two-way binding to form elements</aside>
+          </section>
+          <section data-background-color="#373737">
+            <img data-src="assets/montypython.jpg" style="height:400px;" class="remove-img-presets">
+          </section>
+          <section>
+            <p>Lifecycle hooks</p>
+            <img data-src="assets/lifecycle.png" style="height:400px;" class="remove-img-presets">
+            <aside class="notes">Directive and component instances have a lifecycle as Angular creates, updates and destroys them. We can tap into key moments by implementing hooks</aside>
+          </section>
+          <section>
+            <p>Example AfterViewInit hook</p>
+<pre>
+  <code class="typescript">
+export class AfterViewComponent implements AfterViewInit {
+  private prevHero = '';
+
+  // Query for a VIEW child of type `ChildViewComponent`
+  @ViewChild(ChildViewComponent) viewChild: ChildViewComponent;
+
+  ngAfterViewInit() {
+    // viewChild is set after the view has been initialized
+    this.logIt('AfterViewInit');
+    this.doSomething();
+  }
+}
+  </code>
+</pre>
+          <aside class="notes">Explain that viewchild is an advanced feature. It is available only after view init.</aside>
+          </section>
+        </section>
 			</div>
 		</div>
 

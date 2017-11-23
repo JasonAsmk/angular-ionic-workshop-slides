@@ -4,6 +4,11 @@
 .net-is-cool {
   height: 400px; }
 
+.remove-img-presets {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important; }
+
 .git-github {
   height: 200px;
   margin: auto; }
@@ -49,47 +54,47 @@
 
 @keyframes anim-text-flow-keys {
   0% {
-    color: #5cd683; }
+    color: #7ed65c; }
   5% {
-    color: #5c93d6; }
+    color: #d6625c; }
   10% {
-    color: #85d65c; }
+    color: #d65c5e; }
   15% {
-    color: #d65caf; }
+    color: #d0d65c; }
   20% {
-    color: #7e5cd6; }
+    color: #d69b5c; }
   25% {
-    color: #d65c70; }
+    color: #d65cca; }
   30% {
-    color: #d65ca1; }
+    color: #d6915c; }
   35% {
-    color: #d65ca7; }
+    color: #d6d05c; }
   40% {
-    color: #d4d65c; }
+    color: #5cd676; }
   45% {
-    color: #a55cd6; }
+    color: #5cc6d6; }
   50% {
-    color: #bc5cd6; }
+    color: #d65c8d; }
   55% {
-    color: #975cd6; }
+    color: #5cd6b6; }
   60% {
-    color: #a95cd6; }
+    color: #5c5cd6; }
   65% {
-    color: #cad65c; }
+    color: #d6c05c; }
   70% {
-    color: #5c9bd6; }
+    color: #5c8fd6; }
   75% {
-    color: #5cd681; }
+    color: #d6935c; }
   80% {
-    color: #5cd66a; }
+    color: #5c99d6; }
   85% {
-    color: #7e5cd6; }
+    color: #a95cd6; }
   90% {
-    color: #d6685c; }
+    color: #b15cd6; }
   95% {
-    color: #d65c72; }
+    color: #d6605c; }
   100% {
-    color: #d4d65c; } }
+    color: #5cd6b8; } }
   .anim-text-flow span:nth-of-type(1) {
     animation-delay: -19.8s; }
   .anim-text-flow span:nth-of-type(2) {
