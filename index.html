@@ -553,7 +553,7 @@ export class HeroListComponent implements OnInit {
           </section>
           <section>
             <p>Data binding</p>
-            <img class="remove-img-presets" style="height: 400" data-src="assets/databinding.png">
+            <img class="remove-img-presets" style="height: 400px" data-src="assets/databinding.png">
             <footer>Let's run through the various scenarios</footer>
             <aside class="notes">Explain fast each case</aside>
           </section>
@@ -567,7 +567,7 @@ export class HeroListComponent implements OnInit {
 &#60;/app-hero-wrapper&#62;
   </code>
 </pre>
-          <aside class="notes">Note that it's not the app-hero-wrapper providing the value. But the component that relates to this template!</aside>
+          <aside class="notes">Note that it's not the app-hero-wrapper providing the value. But the component that relates to this template! Also if you forget the [] angular thinks its a constant and creates a DOM property with that name and value(as a string)</aside>
           </section>
           <section>
 <pre>
@@ -772,6 +772,59 @@ export class HeroAppComponent {
             <aside class="notes">Talk about why it is important to style your components. Make the bridging to Ionic and similar.</aside>
           </section>
         </section>
+        <section data-background="#fff" style="color: #6498fd">
+          <section>
+            <h2 style="color: #6498fd">Ionic</h2>
+          </section>
+          <section>
+            <p>What is it?<span class="fragment"> It's a UI framework. Provides a selection of UI components that are ready to use out of the box.</span></p><br>
+            <p class="fragment">So...just UI???<span class="fragment"> Hell no. Lots of awesome stuff build on top of Angular.</span></p>
+            <aside class="notes">Without Ionic or similar you have to make your own components from scratch.</aside>
+          </section>
+          <section>
+            <p>Features</p>
+            <ul>
+              <li class="fragment">Free and Open Source</li>
+              <li class="fragment">Built on Angular, integrates with Cordova</li>
+              <li class="fragment">Most "Native Like" framework ATM</li>
+              <li class="fragment">Default UI is beautiful, can be customized</li>
+              <li class="fragment">Tools & Services</li>
+              <li class="fragment">Awesome community, lots of resources</li>
+            </ul>
+            <aside class="notes">Free is super important since a $1000 license is a show stopper. Native feel is important because...mention our app</aside>
+          </section>
+          <section data-background="#E87175" style="color: white">
+            <p>Other frameworks available like:</p>
+            <ul>
+              <li>Angular Material</li>
+              <li>Semantic UI</li>
+              <li>Kendo UI</li>
+              <li>PrimeNG</li>
+              <li>ng-lightning</li>
+            </ul>
+          </section>
+          <section>
+            <p>What can I find in Ionic?</p>
+            <ul>
+              <li class="fragment">Simple elements for input, images, radiobuttons(all ionic styled and enhanced)...</li>
+              <li class="fragment">Complex elements for slides, lists with sliding items, FABS, refreshers...</li>
+              <li class="fragment">Services for navigation, modal/popup overlays, handling input/gestures...</li>
+              <li class="fragment">Theming capabilities and ionicons</li>
+              <li class="fragment">Cordova native plugins(e.g.Bluetooth)</li>
+              <li class="fragment">Tools(Ionic CLI)</li>
+            </ul>
+            <footer class="fragment" style="color:darkslategray">For more just browse their docs!</footer>
+          </section>
+          <section>
+            <p>One last note</p>
+          </section>
+          <section>
+            <p>So Cordova then Angular then Ionic and lots of config...Sounds like a mess.</p>
+            <p class="fragment">It isn't. All you need is to install Ionic.</p>
+            <aside class="notes">Lots of things are done for you automatically. All you need to do is install Ionic according to docs.</aside>
+          </section>
+        </section>
+        <section data-background= "#373737"><h1>Q&A</h1></section>
 			</div>
 		</div>
 
