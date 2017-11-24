@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/monokai.css">
 
 		<!-- presentation styles -->
 		<link rel="stylesheet" href="css/presentation.css">
@@ -152,7 +152,8 @@
 									npm install --save request
 									npm install --save-dev request
 								</code>
-							</pre> via your command line. But what happens next?
+              </pre> via your command line. But what happens next?
+              <aside>--save is the same with default on newer versions. --save writes the package in package.json dependencies</aside>
 					</section>
 					<section>
 						<p>Installing a package writes an appropriate entry in a file called <code>package.json</code></p>
@@ -294,7 +295,7 @@ r2d2.beepBoop("Help me, Obi-Wan Kenobi. You're my only hope.");
 					</section>
 					<section>
 						<p>Types...duh!</p>
-<pre>
+<pre class="large-code">
 	<code class="typescript">
 let isDone: boolean = false; // boolean
 let times: number = 5; //numbers
@@ -309,7 +310,7 @@ let isClicked: any = true; // any is the catch-all type
           <section>
             <p>You can also create your own types and even make unions, intersections, nullable types, polymorphic, have type guards and assertions and many more.</p>
             <p class="fragment">People with strongly-typed backgrounds do actually appreciate these. e.g.Haskellers</p>
-            <aside class="notes">The plethora of type functionality available doesn't mean you have to use them. Nobody actually does except compiler people and very large projects...</aside>
+            <aside class="notes">The plethora of type functionality available doesn't mean you have to use them. Nobody actually does except compiler people and very large projects...Type assertions tell the compiler what type it is. Type guards check types on runtime like typeof, instanceof</aside>
           </section>
 					<section>
 						<p>Classes (as advertised on ES6!)</p>
@@ -335,11 +336,11 @@ let greeter = new Greeter("world");
 						<p class="fragment">Is everyone familiar with OOP? Classes and Objects?</p>
 						<p class="fragment">In object-oriented programming you need a way to refer to the object for accessing properties, methods etc. The keyword <span style="color:aqua">this</span> is used to refer to the current object in this<sup style="font-size:50%">no pun intended</sup> context</p>
 						<p class="fragment">The way 'this' is scoped is the same as in Javascript. But by using <span style="color:aqua">let declarations</span> and <span style="color:aqua">arrow functions</span> we alleviate some problems.</p>
-						<aside class="notes">Try to explain simply what is this and how it can mess up your code. Bad behaviour that we get from JS. Mention it's out-of-context and should refer to JS docs.</aside>
+						<aside class="notes">Try to explain simply what is this and how it can mess up your code. Bad behaviour that we get from JS. Mention it's out-of-context and should refer to JS docs. Let is block scoped, var is function or global scoped.</aside>
 					</section>
 					<section>
 						<p>Functions</p>
-<pre>
+<pre class="large-code">
 	<code class="typescript">
 // standard JS function
 function add(x, y) {
@@ -395,7 +396,7 @@ alert("card: " + pickedCard.card + " of " + ickedCard.suit);
 					</section>
 					<section>
 						<p>Looks like this:</p>
-<pre>
+<pre class="large-code">
 	<code class="typescript">
 @classDecorator
 class Greeter {
@@ -454,6 +455,7 @@ class Greeter {
               <li class="fragment">Routing(if you need one)</li>
               <li class="fragment">Annotations, Observables, Shadow DOM and more</li>
             </ul>
+            <aside class="notes">Forms are the backbone of business apps, requires design skills and support for two-way data binding, change tracking, validation, and error handling. Anotations are almost the same as decorators. Decorators let you modify the behavior, anotations have builtin behavior. Note that shadow dom and related web components make this whole thing possible. Maybe tell something about observables.</aside>
           </section>
           <section>
             <p>Architecture in Angular</p>
@@ -476,7 +478,7 @@ Injector-> Dependency injection is a way to supply a new instance of a class. (d
           <section>
             <p>Templates</p>
             <p><code>src/app/hero-list.component.html</code></p>
-<pre>
+<pre class="large-code">
   <code class="html">
 &#60;h2&#62;Hero List&#60;/h2&#62;
 
@@ -495,7 +497,7 @@ Injector-> Dependency injection is a way to supply a new instance of a class. (d
           </section>
           <section>
             <p><code>src/app/hero-detail/hero-detail.component.html</code></p>
-<pre>
+<pre class="large-code">
   <code class="html">
 &#60;div *ngIf="hero"&#62;
 
@@ -515,7 +517,7 @@ Injector-> Dependency injection is a way to supply a new instance of a class. (d
           <section>
             <p>Components</p>
             <p><code>src/app/hero-list.component.ts</code></p>
-<pre>
+<pre class="large-code">
   <code class="typescript">
 @Component({
   selector:    'app-hero-list',
@@ -559,7 +561,7 @@ export class HeroListComponent implements OnInit {
           </section>
           <section>
           <p>Property binding<br>selectedHero of outer component binds to hero property of app-hero-detail</p>
-<pre>
+<pre class="large-code">
   <code class="html">
 &#60;h2&#62;Hero details&#60;/h2&#62;
 &#60;app-hero-wrapper&#62;
@@ -570,7 +572,7 @@ export class HeroListComponent implements OnInit {
           <aside class="notes">Note that it's not the app-hero-wrapper providing the value. But the component that relates to this template! Also if you forget the [] angular thinks its a constant and creates a DOM property with that name and value(as a string)</aside>
           </section>
           <section>
-<pre>
+<pre class="large-code">
   <code class="typescript">
 @Component({
   // metadata here
@@ -587,7 +589,7 @@ export class AppHeroDetailComponent{
           </section>
           <section>
             <p>Event binding</p>
-<pre>
+<pre class="large-code">
   <code class="html">
 &#60;button (click)="onSave()"&#62;Save&#60;/button&#62;
 &#60;app-hero-detail (deleteRequest)="deleteHero()"&#62;&#60;/app-hero-detail&#62;
@@ -596,7 +598,7 @@ export class AppHeroDetailComponent{
           <aside class="notes">Explain where is deleteRequest and where is the method it calls. Mention (click) and other reserved events</aside>
           </section>
           <section>
-<pre>
+<pre class="large-code">
   <code class="typescript">
 import { EventEmitter } from '@angular/core';
 
@@ -620,7 +622,7 @@ export class AppHeroDetailComponent{
           </section>
           <section>
             <p>One more example</p>
-<pre>
+<pre class="large-code">
   <code class="typescript">
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
@@ -655,7 +657,7 @@ export class SizerComponent {
           <section>
             <p>
               Does exactly what you think.
-<pre>
+<pre class="large-code">
   <code>
 &#60;app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"&#62;&#60;/app-sizer&#62;
 &#60;app-sizer [(size)]="fontSizePx"&#62;&#60;/app-sizer&#62;
@@ -676,7 +678,7 @@ export class SizerComponent {
           </section>
           <section>
             <p>Example AfterViewInit hook</p>
-<pre>
+<pre class="large-code">
   <code class="typescript">
 export class AfterViewComponent implements AfterViewInit {
   private prevHero = '';
@@ -696,7 +698,7 @@ export class AfterViewComponent implements AfterViewInit {
           </section>
           <section>
             <p>A look on structural directives, ngIf and ngFor</p>
-<pre>
+<pre class="large-code">
   <code class="html">
 &#60;p *ngIf="true"&#62;
   Expression is true and ngIf is true.
@@ -709,10 +711,18 @@ export class AfterViewComponent implements AfterViewInit {
   </code>
 </pre>
           <footer>Adds or removes elements from the DOM</footer>
-          <aside class="notes">Explain why remove instead of hide.</aside>
+          <aside class="notes"Explain why remove instead of hide.</aside>
           </section>
           <section>
-<pre>
+            <p>Special mention</p>
+<pre class="large-code">
+  <code class="html">
+&#60;ion-button round outline color="primary" [hidden]="someBool"&#62;&#60;/ion-button&#62;
+  </code>
+</pre>
+          </section>
+          <section>
+<pre class="large-code">
   <code class="html">
 &#60;div *ngFor="let hero of heroes; let i=index; let odd=odd; trackBy: trackById"&#62;
   ({{i}}) {{hero.name}}
@@ -724,7 +734,7 @@ export class AfterViewComponent implements AfterViewInit {
           </section>
           <section>
             <p>Component Styles</p>
-<pre>
+<pre class="large-code">
   <code class="typescript">
 @Component({
   selector: 'app-root',
@@ -742,7 +752,7 @@ export class HeroAppComponent {
           <aside class="notes">Styles in @Component metadata apply only within the template of that component. Doesn't leak through. No conflicts. Each component has its code, html and style together. Also easier to find css rule as it is not a single piece</aside>
           </section>
           <section>
-<pre>
+<pre class="large-code">
   <code class="typescript">
 @Component({
 selector: 'app-root',
@@ -814,6 +824,11 @@ export class HeroAppComponent {
               <li class="fragment">Tools(Ionic CLI)</li>
             </ul>
             <footer class="fragment" style="color:darkslategray">For more just browse their docs!</footer>
+          </section>
+          <section>
+            <p>We built our app in Ionic!</p>
+            <img data-src="assets/covve-screenshot.png" class="remove-img-presets" style="height:600px;">
+            <aside class="notes">How Ionic helped us with their components. How we applied our styles and even made our own components 'in-touch-game'</aside>
           </section>
           <section>
             <p>One last note</p>

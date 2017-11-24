@@ -7,6 +7,15 @@
     height: 400px;
 }
 
+.large-code{
+  width: 104%!important;
+  position: relative!important;
+  right: 2%!important;
+  code{
+    max-height: 500px!important;
+  }
+}
+
 .remove-img-presets{
   background: none!important;
   border: none!important;
