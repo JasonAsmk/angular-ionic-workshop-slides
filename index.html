@@ -363,7 +363,7 @@ class Foo{
 	</code>
 </pre>
 					</section>
-					<section>
+					<!-- <section>
 						<p style="color:tomato">Secret level, arrow functions and this</p>
 <pre>
 	<code class="typescript">
@@ -387,7 +387,7 @@ alert("card: " + pickedCard.card + " of " + ickedCard.suit);
 	</code>
 </pre>
 <aside class="notes">Reason to use an arrow function is this. Here createCardPicker captures 'window' as 'this'. Using an arrow function instead captures the 'this' where the function is created rather than invoked</aside>
-					</section>
+					</section> -->
 					<section>
 						<p>Special mention to Decorators</p>
 						<p>Decorators are a special kind of syntax that can be applied to classes, methods, properties, accessors and parameters.</p>
@@ -841,7 +841,10 @@ export class HeroAppComponent {
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
+        ],
+        // 1:1 resolution
+        width:900,
+        height:900
 			});
 		</script>
 	</body>
