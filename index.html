@@ -36,17 +36,23 @@
 						<h2>Welcome to the</h2>
 						<h1 class="anim-text-flow"><span>Angular and Ionic workshop</span></h1>
 						<footer>
-							Hosted by Covve with the help of...
+							Hosted by Covve.
 						</footer>
 					</section>
 					<section>
-						<a href="https://twitter.com/masimplo">this guy @masimplo</a>
-						<img data-src="https://pbs.twimg.com/profile_images/492640948212338688/g26U_cDm_400x400.jpeg">
-					</section>
+            <p>Michael<br></p>
+						<a href="https://twitter.com/masimplo">@masimplo</a><br>
+						<img style="height: 300px;" data-src="https://pbs.twimg.com/profile_images/492640948212338688/g26U_cDm_400x400.jpeg" alt="Picture of Mike">
+          </section>
 					<section>
-						<a href="https://twitter.com/jasonasmk">and that guy @JasonAsmk</a>
-						<img data-src="https://pbs.twimg.com/profile_images/913471706211241984/yyzfl-5R_400x400.jpg">
-					</section>
+            <p>Iason<br> </p>
+						<a href="https://twitter.com/jasonasmk">@jasonasmk</a><br>
+						<img style="height: 300px;" data-src="https://avatars1.githubusercontent.com/u/994111?s=460&v=4" alt="Picture of Jason">
+          </section>
+          <section>
+            <p>and our awesome team 👍</p>
+            <img data-src="https://covve.com/wp-content/themes/covve/images/team-selfie.jpg" alt="Covve team photo">
+          </section>
 				</section>
 
 				<section class="slide-2">So...<br>Let's get started!</section>
@@ -61,7 +67,7 @@
 						<p>Along with HTML(for content), CSS(for styling). JS(functionality) is one of the 3 main technologies used in modern web.</p>
 					</section>
 					<section>
-							<h2>Why browser technology is the future</h2>
+							<h2>Why web technology is the future</h2>
 							<ul>
 								<li class="fragment">Browsers are almost everywhere(well not in your toaster yet). Develop for many platforms with one codebase.</li>
 								<li class="fragment">Powerful layout engines (Blink, Gecko, Servo, Webkit etc) and JS engines(V8, SpiderMonkey, Nitro etc) make browsers blazing fast</li>
@@ -74,7 +80,7 @@
 						<h2>How about um...downsides?</h2>
 						<p>Like all things there are some drawbacks</p>
 						<ul>
-							<li class="fragment">Technologies change every now and then. You need to keep up.</li>
+							<li class="fragment">Technologies change frequently. You need to keep up.</li>
 							<li class="fragment">Not exactly plug and play for framework setups. Documentation is awesome though!</li>
 							<li class="fragment">You *will* rely too much on external libraries. </li>
 						</ul>
@@ -207,7 +213,7 @@
 						<p>Copy assets to the target platforms as a step prior to building.</p>
 					</section>
 					<section>
-						<pre><code>ionic cordova build [<platform>]</code></pre>
+						<pre><code>ionic cordova build [&#60;platform&#62;]</code></pre>
 						<p>Build your project for the target platform. Possible options are <code>android</code> and <code>ios</code></p>
 					</section>
 					<section>
@@ -508,7 +514,7 @@ Injector-> Dependency injection is a way to supply a new instance of a class. (d
           </section>
           <section>
             <p>Components</p>
-            <p>src/app/hero-list.component.ts</p>
+            <p><code>src/app/hero-list.component.ts</code></p>
 <pre>
   <code class="typescript">
 @Component({
@@ -547,7 +553,7 @@ export class HeroListComponent implements OnInit {
           </section>
           <section>
             <p>Data binding</p>
-            <img class="remove-img-presets" style="height: 200" data-src="assets/databinding.png">
+            <img class="remove-img-presets" style="height: 400" data-src="assets/databinding.png">
             <footer>Let's run through the various scenarios</footer>
             <aside class="notes">Explain fast each case</aside>
           </section>
@@ -583,7 +589,7 @@ export class AppHeroDetailComponent{
             <p>Event binding</p>
 <pre>
   <code class="html">
-&#60;button (click)="onSave"&#62;Save&#60;/button&#62;
+&#60;button (click)="onSave()"&#62;Save&#60;/button&#62;
 &#60;app-hero-detail (deleteRequest)="deleteHero()"&#62;&#60;/app-hero-detail&#62;
   </code>
 </pre>
@@ -687,6 +693,83 @@ export class AfterViewComponent implements AfterViewInit {
   </code>
 </pre>
           <aside class="notes">Explain that viewchild is an advanced feature. It is available only after view init.</aside>
+          </section>
+          <section>
+            <p>A look on structural directives, ngIf and ngFor</p>
+<pre>
+  <code class="html">
+&#60;p *ngIf="true"&#62;
+  Expression is true and ngIf is true.
+  This paragraph is in the DOM.
+&#60;/p&#62;
+&#60;p *ngIf="false"&#62;
+  Expression is false and ngIf is false.
+  This paragraph is not in the DOM.
+&#60;/p&#62;
+  </code>
+</pre>
+          <footer>Adds or removes elements from the DOM</footer>
+          <aside class="notes">Explain why remove instead of hide.</aside>
+          </section>
+          <section>
+<pre>
+  <code class="html">
+&#60;div *ngFor="let hero of heroes; let i=index; let odd=odd; trackBy: trackById"&#62;
+  ({{i}}) {{hero.name}}
+&#60;/div&#62;
+  </code>
+</pre>
+          <p>For every element in the array heroes, spawn one div element with whatever it contains</p>
+          <p class="fragment">I.E. if one of your hero objects had name 'Xena' and was 2nd it would show '(1) Xena'</p>
+          </section>
+          <section>
+            <p>Component Styles</p>
+<pre>
+  <code class="typescript">
+@Component({
+  selector: 'app-root',
+  template: `
+    &#60;h1&#62;Tour of Heroes&#60;/h1&#62;
+    &#60;app-hero-main [hero]="hero"&#62;&#60;/app-hero-main&#62;
+  `,
+  styles: ['h1 { font-weight: normal; }']
+})
+export class HeroAppComponent {
+/* . . . */
+}
+  </code>
+</pre>
+          <aside class="notes">Styles in @Component metadata apply only within the template of that component. Doesn't leak through. No conflicts. Each component has its code, html and style together. Also easier to find css rule as it is not a single piece</aside>
+          </section>
+          <section>
+<pre>
+  <code class="typescript">
+@Component({
+selector: 'app-root',
+  template: `
+    &#62;h1&#62;Tour of Heroes&#62;/h1&#62;
+    &#62;app-hero-main [hero]="hero"&#62;&#62;/app-hero-main&#62;
+  `,
+  styleUrls: ['./hero-app.component.css']
+})
+export class HeroAppComponent {
+/* . . . */
+}
+  </code>
+</pre>
+          <aside class="notes">alternate syntax for specifying url, there is also a way to do this automatically</aside>
+          </section>
+          <section>
+            <p>Note about components and styles</p>
+            <ul>
+              <li class="fragment">Angular components have default styles or no styles at all.</li>
+              <li class="fragment">For a strikingly beautiful app you have to style your components, not only code their behaviour</li>
+              <li class="fragment">
+                Plain css works but we recomment using SASS<br>
+                <img data-src="assets/sass.svg" class="remove-img-presets" style="height:200px;">
+              </li>
+            </ul>
+            <aside class="notes">Talk about why it is important to style your components. Make the bridging to Ionic and similar.</aside>
           </section>
         </section>
 			</div>
